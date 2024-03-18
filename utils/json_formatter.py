@@ -51,9 +51,9 @@ def convert_format(original_file, target_file, is_grouped=False):
         for item in items:
             try:
                 corrected_item = {
-                    "input": item["input"],
                     "instruction": item["instruction"],
-                    "answer": item["output"],
+                    "input": item["input"],
+                    "output": item["output"],
                 }
                 output_data.append(corrected_item)
             except KeyError as e:
@@ -75,7 +75,7 @@ if __name__ == "__main__":
     logging.info(f"Current Working Directory: {os.getcwd()}")
 
     # Modify to change different input file
-    original_file_name = "judical_examination_v2.json"
+    original_file_name = "legal_advice.json"
 
     BASE_DIR = os.getcwd()
     RAW_DATA_FOLDER = os.path.join(BASE_DIR, "data", "raw")
@@ -83,4 +83,4 @@ if __name__ == "__main__":
     original_file_path = os.path.join(RAW_DATA_FOLDER, original_file_name)
     target_file_path = os.path.join(PROCESSED_DATA_FOLDER, original_file_name)
 
-    convert_format(original_file_path, target_file_path, is_grouped=False)
+    convert_format(original_file_path, target_file_path, is_grouped=True)
